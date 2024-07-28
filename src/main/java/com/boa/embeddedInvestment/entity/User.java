@@ -29,7 +29,7 @@ public class User implements UserDetails {
             }
     )
     @Column(nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -37,11 +37,15 @@ public class User implements UserDetails {
     @Column(unique = true, length = 100, nullable = false)
     private String email;
 
-    @Column(unique = true, length = 10, nullable = false)
+//    @Column(unique = true, length = 10, nullable = false)
     private String mobileNumber;
 
     @Column(nullable = false)
     private String password;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "wallet_id", referencedColumnName = "id")
+    private Wallet wallet;
 
     @CreationTimestamp
     @Column(updatable = false, name = "created_at")

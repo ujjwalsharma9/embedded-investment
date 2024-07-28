@@ -24,6 +24,7 @@ public class UserController {
         userResponseDto.setName(currentUser.getName());
         userResponseDto.setEmail(currentUser.getEmail());
         userResponseDto.setMobileNumber(currentUser.getMobileNumber());
+        userResponseDto.setTotalWalletAmount(currentUser.getWallet().getTotalAmount());
         return ResponseEntity.ok(userResponseDto);
 
     }

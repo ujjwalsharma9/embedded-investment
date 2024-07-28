@@ -4,8 +4,9 @@ import lombok.Data;
 
 @Data
 public class UserResponseDto {
-    private Integer id;
+    private Long id;
     private String name;
     private String email;
     private String mobileNumber;
+    private Long totalWalletAmount;
 }

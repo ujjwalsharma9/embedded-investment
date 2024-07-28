@@ -8,10 +8,7 @@ import com.boa.embeddedInvestment.entity.User;
 import com.boa.embeddedInvestment.service.AuthenticationService;
 import com.boa.embeddedInvestment.service.JwtService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -33,6 +30,7 @@ public class AuthenticationController {
         userResponseDto.setName(registeredUser.getName());
         userResponseDto.setEmail(registeredUser.getEmail());
         userResponseDto.setMobileNumber(registeredUser.getMobileNumber());
+        userResponseDto.setTotalWalletAmount(registeredUser.getWallet().getTotalAmount());
         return ResponseEntity.ok(userResponseDto);
     }
 
@@ -47,5 +45,10 @@ public class AuthenticationController {
         loginResponse.setExpiresIn(jwtService.getExpirationTime());
 
         return ResponseEntity.ok(loginResponse);
+    }
+
+    @GetMapping("/verifyAccount/{accountId}")
+    public ResponseEntity<Boolean> verifyAccount(@PathVariable long accountId){
+        return ResponseEntity.ok(authenticationService.checkIfUserExists(accountId));
     }
 }

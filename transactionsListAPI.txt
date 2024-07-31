@@ -1,0 +1,27 @@
+GET: http://GBMACVCSW5980:8080/api/transaction/account
+
+'Authorization: Bearer Token'
+
+Response:
+
+
+
+[
+{
+"referenceId":"",
+"accountId":100001,
+"description":"",
+"amount":0.0,
+"walletBalance":0.0,
+"createdAt": {{date}}
+},
+
+{
+"referenceId":"",
+"accountId":100001,
+"description":"",
+"amount":0.0,
+"walletBalance":0.0,
+"createdAt": {{date}}
+}
+]
